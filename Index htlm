@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="ckb" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>بانگهێشتنامەی هاوسەرگیری</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --soft-blue-dark: #28576e;
+    --soft-blue-mid: #4e87a1;
+    --cream-light: #fcf9f2;
+    --gold-soft: #c5a147;
+    --ink-blue: #204354;
+    --rose-soft: #d47a8e;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background:
+      radial-gradient(circle at top, rgba(223, 238, 245, 0.65), transparent 52%),
+      linear-gradient(160deg, #dfeef5 0%, #f6f1e6 55%, #d5e7f0 100%);
+    font-family: "Noto Naskh Arabic", "Amiri", serif;
+    direction: rtl;
+    color: var(--ink-blue);
+  }
+
+  /* وەرەقەی 9:16 بە وێنەی HD لە سەرەتا تا کۆتایی */
+  .sheet-9-16 {
+    position: relative;
+    width: min(100vw, 450px);
+    min-height: calc(min(100vw, 450px) * 16 / 9);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 36px 18px 64px;
+    text-align: center;
+    background-color: #f4f1ea;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0 20px 50px rgba(40, 87, 110, 0.22);
+    border-left: 1.5px solid rgba(78, 135, 161, 0.35);
+    border-right: 1.5px solid rgba(78, 135, 161, 0.35);
+    overflow-x: hidden;
+  }
+
+  .intro {
+    position: relative;
+    z-index: 3;
+    margin: 8px 0 24px;
+    font-family: "Amiri", serif;
+    font-size: 31px;
+    font-weight: 700;
+    color: #36454c;
+    text-shadow: 0 2px 12px rgba(255, 255, 255, 0.98);
+  }
+
+  /* کارتی دوای کردنەوە */
+  .revealed-card-1922 {
+    display: none;
+    position: relative;
+    width: min(334px, 88vw);
+    margin: 8px 0 18px;
+    z-index: 4;
+    border-radius: 22px;
+    padding: 12px;
+    background: rgba(250, 246, 238, 0.9);
+    border: 2.5px solid rgba(197, 161, 71, 0.68);
+    box-shadow: 0 14px 30px rgba(40, 87, 110, 0.22);
+    animation: revealPop 0.65s cubic-bezier(.22, 1, .36, 1) forwards;
+  }
+
+  .revealed-card-1922.show {
+    display: block;
+  }
+
+  @keyframes revealPop {
+    0% { opacity: 0; transform: scale(0.92) translateY(10px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .floral-inner-plate {
+    position: relative;
+    border-radius: 16px;
+    border: 2px solid #c9a74c;
+    padding: 20px 14px 18px;
+    background-color: rgba(252, 249, 242, 0.88);
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+  }
+
+  .floral-inner-plate::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(252, 249, 242, 0.76);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .floral-inner-plate > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .top-star-diamond {
+    font-family: "Amiri", serif;
+    font-size: 16px;
+    color: var(--soft-blue-mid);
+    letter-spacing: 6px;
+    margin-bottom: 10px;
+  }
+
+  .plate-bism {
+    font-family: "Amiri", serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--soft-blue-dark);
+    margin: 0 0 8px;
+  }
+
+  .plate-invite-text {
+    font-family: "Noto Naskh Arabic", "Amiri", serif;
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--ink-blue);
+    margin: 0 0 14px;
+  }
+
+  .plate-couple-names {
+    font-family: "Amiri", serif;
+    font-size: 29px;
+    font-weight: 700;
+    color: var(--soft-blue-dark);
+    margin: 4px 0 10px;
+    text-shadow: 0 1px 6px rgba(255, 255, 255, 0.95);
+  }
+
+  .plate-swans-heart {
+    font-size: 22px;
+    line-height: 1.3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  button, .btn-link {
+    position: relative;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 11px 24px;
+    border: 1.5px solid #6fa3bd;
+    border-radius: 26px;
+    background: linear-gradient(135deg, #98c4da, #73a8c2);
+    color: var(--cream-light);
+    font-family: "Noto Naskh Arabic", "Amiri", serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 5px 14px rgba(40, 87, 110, 0.2);
+    transition: transform 0.15s ease, box-shadow 0.2s ease;
+  }
+
+  button:hover, .btn-link:hover { box-shadow: 0 7px 18px rgba(78, 135, 161, 0.34); }
+  button:active, .btn-link:active { transform: scale(0.97); }
+
+  .btn-cream {
+    background: linear-gradient(135deg, #fcf9f2, #e7f1f6);
+    color: var(--soft-blue-dark);
+    border-color: #8abbd4;
+  }
+
+  .music {
+    background: rgba(252, 249, 242, 0.94);
+    color: var(--soft-blue-dark);
+    border: 1.5px solid #8abbd4;
+    margin-top: 14px;
+    padding: 8px 18px;
+    font-size: 13px;
+  }
+
+  #message {
+    position: relative;
+    z-index: 3;
+    margin: 10px 0 0;
+    font-family: "Amiri", serif;
+    font-size: 18px;
+    color: var(--soft-blue-dark);
+    text-shadow: 0 1px 8px rgba(255, 255, 255, 0.95);
+    min-height: 24px;
+  }
+
+  .details {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 380px;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 1.3s ease 0.4s, opacity 1s ease 0.6s;
+  }
+
+  .details.show {
+    max-height: 2400px;
+    opacity: 1;
+  }
+
+  .card {
+    background: rgba(252, 249, 242, 0.92);
+    border: 2px solid rgba(78, 135, 161, 0.45);
+    outline: 3px double rgba(197, 161, 71, 0.4);
+    outline-offset: -7px;
+    border-radius: 16px;
+    padding: 22px 16px;
+    margin-top: 20px;
+    box-shadow: 0 10px 24px rgba(40, 87, 110, 0.14);
+  }
+
+  .card h3 {
+    margin: 0 0 10px;
+    font-family: "Amiri", serif;
+    font-size: 22px;
+    color: var(--soft-blue-dark);
+  }
+
+  .card p {
+    margin: 6px 0;
+    font-size: 15px;
+    color: var(--ink-blue);
+  }
+
+  .poem-card {
+    background: rgba(252, 249, 242, 0.92);
+    border: 2px solid var(--gold-soft);
+    outline: 3px double rgba(78, 135, 161, 0.4);
+    outline-offset: -7px;
+    border-radius: 16px;
+    padding: 22px 16px;
+    margin-top: 20px;
+    box-shadow: 0 10px 24px rgba(40, 87, 110, 0.14);
+  }
+
+  .poem-verses {
+    font-family: "Amiri", serif;
+    font-size: 17px;
+    line-height: 1.95;
+    color: var(--soft-blue-dark);
+    font-style: italic;
+    margin: 6px 0 8px;
+  }
+
+  .embossed-calendar-card {
+    position: relative;
+    background: rgba(252, 249, 242, 0.92);
+    border: 2px solid rgba(78, 135, 161, 0.42);
+    outline: 3px double rgba(197, 161, 71, 0.45);
+    outline-offset: -7px;
+    border-radius: 18px;
+    padding: 24px 16px 22px;
+    margin-top: 20px;
+    box-shadow: 0 12px 26px rgba(40, 87, 110, 0.15);
+  }
+
+  .embossed-frame {
+    position: relative;
+    border: 1.5px solid rgba(176, 164, 142, 0.45);
+    border-radius: 14px;
+    padding: 16px 10px 14px;
+    background: rgba(252, 249, 242, 0.78);
+  }
+
+  .embossed-top-medallion {
+    width: 118px;
+    height: 44px;
+    margin: 0 auto 8px;
+    border-radius: 40px;
+    border: 2px solid rgba(168, 152, 124, 0.5);
+    background: linear-gradient(180deg, #ffffff, #ece5d8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Cormorant Garamond", "Amiri", serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--soft-blue-dark);
+  }
+
+  .calendar-year-title {
+    font-family: "Cormorant Garamond", "Amiri", serif;
+    font-size: 18px;
+    color: var(--soft-blue-mid);
+    margin: 4px 0 8px;
+    letter-spacing: 2px;
+  }
+
+  .calendar-grid {
+    direction: ltr;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px 2px;
+    align-items: center;
+    justify-items: center;
+    font-family: "Cormorant Garamond", "Amiri", serif;
+  }
+
+  .cal-weekday {
+    font-style: italic;
+    font-size: 13.5px;
+    color: var(--soft-blue-dark);
+    padding-bottom: 4px;
+    font-weight: 600;
+  }
+
+  .cal-day {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    color: #496675;
+    border-radius: 50%;
+    user-select: none;
+  }
+
+  .cal-day.special-12 {
+    color: var(--soft-blue-dark);
+    font-weight: 700;
+    font-size: 14px;
+    z-index: 2;
+  }
+
+  .cal-day.special-12 .day-12-heart {
+    position: absolute;
+    inset: -3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 31px;
+    color: rgba(212, 122, 142, 0.36);
+    text-shadow: 0 2px 8px rgba(212, 122, 142, 0.45);
+    z-index: -1;
+    animation: calHeartBeat 2s ease-in-out infinite;
+  }
+
+  .cal-day.special-12 .day-12-num {
+    position: relative;
+    z-index: 2;
+    color: #7c263b;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
+  }
+
+  @keyframes calHeartBeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.13); }
+  }
+
+  .calendar-botanical-footer {
+    margin-top: 10px;
+    font-family: "Amiri", serif;
+    font-size: 15px;
+    color: var(--soft-blue-mid);
+    letter-spacing: 3px;
+  }
+
+  .map-box {
+    margin-top: 12px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1.5px solid rgba(78, 135, 161, 0.45);
+    box-shadow: 0 4px 12px rgba(40, 87, 110, 0.12);
+  }
+
+  .map-box iframe {
+    width: 100%;
+    height: 185px;
+    border: 0;
+    display: block;
+  }
+
+  .count {
+    font-family: "Amiri", serif;
+    font-size: 34px;
+    color: var(--soft-blue-mid);
+    font-weight: 700;
+  }
+
+  .action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 14px;
+  }
+
+  input, select {
+    width: 100%;
+    padding: 10px 12px;
+    margin: 7px 0;
+    border: 1.5px solid #b5d5e6;
+    border-radius: 10px;
+    font-family: "Noto Naskh Arabic", "Amiri", serif;
+    font-size: 15px;
+    background: var(--cream-light);
+    color: var(--ink-blue);
+  }
+
+  #rsvpMsg {
+    margin-top: 10px;
+    font-size: 14px;
+    color: var(--soft-blue-dark);
+    font-weight: 600;
+    min-height: 20px;
+  }
+
+  .floating-item {
+    position: fixed;
+    top: -36px;
+    pointer-events: none;
+    z-index: 99;
+    user-select: none;
+  }
+
+  .petal-item { color: var(--rose-soft); animation: fallPetal linear forwards; }
+  @keyframes fallPetal {
+    0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.95; }
+    50% { transform: translateY(55vh) translateX(22px) rotate(180deg); opacity: 0.9; }
+    100% { transform: translateY(112vh) translateX(-18px) rotate(360deg); opacity: 0; }
+  }
+
+  .star-item {
+    color: var(--gold-soft);
+    text-shadow: 0 0 8px rgba(235, 215, 158, 0.95);
+    animation: fallStar linear forwards;
+  }
+  @keyframes fallStar {
+    0% { transform: translateY(0) scale(0.7) rotate(0deg); opacity: 0.2; }
+    30% { opacity: 1; transform: translateY(33vh) scale(1.2) rotate(110deg); }
+    70% { opacity: 0.85; transform: translateY(77vh) scale(0.85) rotate(240deg); }
+    100% { transform: translateY(112vh) scale(1) rotate(360deg); opacity: 0; }
+  }
+
+  .heart-item { color: var(--rose-soft); animation: flyHeart ease-in forwards; }
+  @keyframes flyHeart {
+    0% { transform: translateY(0) translateX(0) scale(0.7); opacity: 0.9; }
+    45% { transform: translateY(50vh) translateX(-24px) scale(1.12); opacity: 0.95; }
+    100% { transform: translateY(112vh) translateX(20px) scale(0.95); opacity: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet-9-16" id="sheet">
+  <h2 class="intro">بانگهێشتنامەی هاوسەرگیری</h2>
+
+  <div class="revealed-card-1922" id="revealedCard1922">
+    <div class="floral-inner-plate" id="floralPlate">
+      <div class="top-star-diamond">* ✧ *</div>
+      <p class="plate-bism">بەناوی خوای بەخشندەو میهرەبان</p>
+      <p class="plate-invite-text">بە خۆشەویستی و شادییەوە بانگهێشتتان دەکەین بۆ<br />ئاهەنگی هاوسەرگیریمان</p>
+      <h3 class="plate-couple-names" id="names"></h3>
+      <div class="plate-swans-heart" aria-label="دوو قاز و دڵ">
+        <span>🦢</span>
+        <span>❤️</span>
+        <span>🦢</span>
+      </div>
+    </div>
+  </div>
+
+  <button id="openBtn" type="button" onclick="togglePlainCard()">کردنەوەی بانگهێشتنامە</button>
+  <p id="message"></p>
+
+  <div class="details" id="details">
+    <div class="poem-card">
+      <div class="top-star-diamond">✿ ♡ ✿</div>
+      <h3>دیاری دڵ بۆ ئێوەی ئازیز</h3>
+      <div class="poem-verses">
+        بە هاتنتان گوڵ و شادی دەپشکوێت لەم شەوە جوانەدا<br />
+        دوو دڵ بەیەک دەگەنەوە لە نێو باخچەی ئەڤیندا<br />
+        لە هەر شوێنێک بن، بوونتان ڕووناکییە بۆ چاومان<br />
+        خۆشحاڵ دەبین بە ئامادەبوونتان لە جێژنی ژیانماندا
+      </div>
+      <div class="top-star-diamond">🦢 ❤ 🦢</div>
+    </div>
+
+    <div class="embossed-calendar-card">
+      <div class="embossed-frame">
+        <div class="embossed-top-medallion">December</div>
+        <div class="calendar-year-title">2026</div>
+        <div class="calendar-grid" id="calendarGrid" aria-label="ڕۆژژمێری مانگی ١٢"></div>
+        <div class="calendar-botanical-footer">✿ ✧ ✿</div>
+      </div>
+
+      <h3 style="margin-top:14px;">بەروار و نەخشەی شوێن</h3>
+      <p id="dateText"></p>
+      <p id="timeText"></p>
+      <p id="venueText"></p>
+      <p class="count" id="count"></p>
+      <p>ڕۆژی ماوە بۆ ئاهەنگەکە</p>
+
+      <div class="map-box">
+        <iframe
+          id="mapFrame"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="نەخشەی هۆڵی شیڕاتۆن"
+          src="https://www.google.com/maps?q=Sheraton+Hall+Sulaymaniyah&output=embed">
+        </iframe>
+      </div>
+
+      <div class="action-buttons">
+        <a id="mapBtn" class="btn-link" href="#" target="_blank" rel="noopener noreferrer">🗺️ کردنەوەی نەخشە</a>
+        <button class="btn-cream" type="button" onclick="copyVenue()">📋 کۆپیکردنی شوێن</button>
+        <button class="btn-cream" type="button" onclick="addToCalendar()">📅 زیادکردن بۆ ڕۆژژمێر</button>
+      </div>
+      <p id="copyMsg" style="font-size:13px; color:#28576e; margin-top:8px;"></p>
+    </div>
+
+    <div class="card">
+      <div class="top-star-diamond">❖ ✿ ❖</div>
+      <h3>وەڵامدانەوە</h3>
+      <input id="guestName" type="text" placeholder="ناوی تۆ">
+      <select id="attend">
+        <option value="بەڵێ، دێم">بەڵێ، دێم</option>
+        <option value="ببورە، نایەم">ببورە، نایەم</option>
+      </select>
+      <input id="guestCount" type="number" min="1" max="20" value="1" placeholder="ژمارەی میوان">
+      <button type="button" onclick="sendRSVP()">ناردنی وەڵام</button>
+      <p id="rsvpMsg"></p>
+    </div>
+
+    <button class="music" id="musicBtn" type="button" onclick="toggleMusic()">♪ مۆسیقا</button>
+  </div>
+</div>
+
+<script>
+const CONFIG = {
+  bride: "سارا",
+  groom: "زیرەک",
+  backgroundImage: "https://i.ibb.co/9kg9ckYv/IMG-1918.jpg",
+  date: "2026-12-12",
+  dateText: "١٢ / ١٢ / ٢٠٢٦",
+  startHour: 19,
+  startMinute: 0,
+  durationHours: 4,
+  time: "٧:٠٠ ی ئێوارە",
+  venue: "هۆڵی شیڕاتۆن",
+  mapUrl: "https://www.google.com/maps/search/?api=1&query=Sheraton+Hall+Sulaymaniyah",
+  phone: "9647512007112",
+  music: ""
+};
+
+if (CONFIG.backgroundImage && CONFIG.backgroundImage.trim() !== "") {
+  const bgUrl = `url("${CONFIG.backgroundImage.trim()}")`;
+  document.getElementById("sheet").style.backgroundImage = bgUrl;
+  document.getElementById("floralPlate").style.backgroundImage = bgUrl;
+}
+
+document.getElementById("names").textContent = `${CONFIG.bride} و ${CONFIG.groom}`;
+
+(function renderEmbossedCalendar() {
+  const grid = document.getElementById("calendarGrid");
+  if (!grid) return;
+
+  const weekdays = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
+  weekdays.forEach((wd) => {
+    const el = document.createElement("div");
+    el.className = "cal-weekday";
+    el.textContent = wd;
+    grid.appendChild(el);
+  });
+
+  const leadingBlanks = 2;
+  for (let i = 0; i < leadingBlanks; i++) {
+    const blank = document.createElement("div");
+    blank.className = "cal-day";
+    grid.appendChild(blank);
+  }
+
+  for (let day = 1; day <= 31; day++) {
+    const cell = document.createElement("div");
+    cell.className = "cal-day";
+
+    if (day === 12) {
+      cell.classList.add("special-12");
+      cell.title = "ڕۆژی ئاهەنگ ١٢ / ١٢";
+      const heart = document.createElement("span");
+      heart.className = "day-12-heart";
+      heart.textContent = "❤";
+      const num = document.createElement("span");
+      num.className = "day-12-num";
+      num.textContent = String(day);
+      cell.appendChild(heart);
+      cell.appendChild(num);
+    } else {
+      cell.textContent = String(day);
+    }
+    grid.appendChild(cell);
+  }
+})();
+
+document.getElementById("dateText").textContent = `📅 ${CONFIG.dateText}`;
+document.getElementById("timeText").textContent = CONFIG.time ? `🕕 ${CONFIG.time}` : "";
+document.getElementById("venueText").textContent = `📍 ${CONFIG.venue}`;
+document.getElementById("mapBtn").href = CONFIG.mapUrl;
+
+const targetDay = new Date(`${CONFIG.date}T00:00:00`);
+const todayDay = new Date();
+todayDay.setHours(0, 0, 0, 0);
+const days = Math.max(0, Math.round((targetDay - todayDay) / 86400000));
+document.getElementById("count").textContent = days.toLocaleString("ar-IQ");
+
+const audio = CONFIG.music ? new Audio(CONFIG.music) : null;
+if (audio) audio.loop = true;
+
+function togglePlainCard() {
+  const card = document.getElementById("revealedCard1922");
+  const details = document.getElementById("details");
+  const isOpened = card.classList.toggle("show");
+  details.classList.toggle("show", isOpened);
+  document.getElementById("openBtn").textContent = isOpened
+    ? "داخستنەوەی بانگهێشتنامە"
+    : "کردنەوەی بانگهێشتنامە";
+  document.getElementById("message").textContent = isOpened
+    ? "بە ئارەزووی بینینتانەوین!"
+    : "";
+
+  if (isOpened) {
+    spawnEffects();
+    chime();
+    if (audio && audio.paused) {
+      audio.play().catch(() => {});
+    }
+  }
+}
+
+function copyVenue() {
+  const msg = document.getElementById("copyMsg");
+  const textToCopy = `${CONFIG.venue} - ${CONFIG.dateText} (${CONFIG.time})`;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(textToCopy).then(() => {
+      msg.textContent = "ناونیشان کۆپی کرا ✓";
+    }).catch(() => {
+      msg.textContent = textToCopy;
+    });
+  } else {
+    msg.textContent = textToCopy;
+  }
+}
+
+function chime() {
+  try {
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    const ctx = new AudioCtx();
+    if (ctx.state === "suspended") ctx.resume();
+    [523.25, 659.25, 783.99, 1046.5].forEach((freq, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.frequency.value = freq;
+      osc.type = "sine";
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      const t = ctx.currentTime + i * 0.25;
+      gain.gain.setValueAtTime(0.0001, t);
+      gain.gain.exponentialRampToValueAtTime(0.18, t + 0.05);
+      gain.gain.exponentialRampToValueAtTime(0.0001, t + 1.2);
+      osc.start(t);
+      osc.stop(t + 1.3);
+    });
+  } catch (e) {}
+}
+
+function spawnEffects() {
+  const specs = [
+    { symbol: "✿", cls: "petal-item", count: 16 },
+    { symbol: "✦", cls: "star-item", count: 14 },
+    { symbol: "♥", cls: "heart-item", count: 12 }
+  ];
+
+  specs.forEach(({ symbol, cls, count }) => {
+    for (let i = 0; i < count; i++) {
+      const el = document.createElement("div");
+      el.className = `floating-item ${cls}`;
+      el.textContent = symbol;
+      el.style.left = `${Math.random() * 96}vw`;
+      el.style.fontSize = `${14 + Math.random() * 14}px`;
+      const dur = 4.5 + Math.random() * 4.5;
+      el.style.animationDuration = `${dur}s`;
+      el.style.animationDelay = `${Math.random() * 2.2}s`;
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), (dur + 2.5) * 1000);
+    }
+  });
+}
+
+function addToCalendar() {
+  const [y, m, d] = CONFIG.date.split("-").map(Number);
+  const pad = (n) => String(n).padStart(2, "0");
+
+  const startLocal = new Date(y, m - 1, d, CONFIG.startHour, CONFIG.startMinute, 0);
+  const endLocal = new Date(startLocal.getTime() + CONFIG.durationHours * 3600000);
+
+  const formatICSDate = (dt) =>
+    `${dt.getFullYear()}${pad(dt.getMonth() + 1)}${pad(dt.getDate())}T${pad(dt.getHours())}${pad(dt.getMinutes())}00`;
+
+  const title = `ئاهەنگی هاوسەرگیری ${CONFIG.bride} و ${CONFIG.groom}`;
+  const icsContent = [
+    "BEGIN:VCALENDAR",
+    "VERSION:2.0",
+    "PRODID:-//Wedding Invitation//CKB//EN",
+    "BEGIN:VEVENT",
+    `UID:wedding-${y}${pad(m)}${pad(d)}@invite`,
+    `DTSTAMP:${formatICSDate(new Date())}`,
+    `DTSTART:${formatICSDate(startLocal)}`,
+    `DTEND:${formatICSDate(endLocal)}`,
+    `SUMMARY:${title}`,
+    `LOCATION:${CONFIG.venue}`,
+    `DESCRIPTION:بانگهێشتنامەی ئاهەنگی هاوسەرگیری ${CONFIG.bride} و ${CONFIG.groom} لە ${CONFIG.venue}`,
+    "END:VEVENT",
+    "END:VCALENDAR"
+  ].join("\r\n");
+
+  const blob = new Blob([icsContent], { type: "text/calendar;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = `wedding-${CONFIG.date}.ics`;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function toggleMusic() {
+  const btn = document.getElementById("musicBtn");
+  if (!audio) {
+    alert("هێشتا لینکی مۆسیقا لە CONFIG.music زیاد نەکراوە.");
+    return;
+  }
+  if (audio.paused) {
+    audio.play().catch(() => {});
+    btn.textContent = "❚❚ ڕاگرتنی مۆسیقا";
+  } else {
+    audio.pause();
+    btn.textContent = "♪ مۆسیقا";
+  }
+}
+
+function sendRSVP() {
+  const name = document.getElementById("guestName").value.trim();
+  const attend = document.getElementById("attend").value;
+  const count = Math.max(1, parseInt(document.getElementById("guestCount").value, 10) || 1);
+  const msg = document.getElementById("rsvpMsg");
+  if (!name) {
+    msg.textContent = "تکایە ناوەکەت بنووسە.";
+    return;
+  }
+  const text = `وەڵامی بانگهێشتن: ${name} - ${attend} (${count} کەس)`;
+  msg.textContent = `سوپاس ${name}! 💌`;
+  if (CONFIG.phone) {
+    window.open(`https://wa.me/${CONFIG.phone}?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
+  }
+}
+</script>
+</body>
+</html>
